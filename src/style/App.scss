@@ -1,0 +1,167 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  // border: 0.1px dashed #868686;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: local("Roboto"),
+       url(../assets/fonts/Roboto/Roboto-Regular.ttf);
+}
+html {
+  font-size: 62.5%;
+  font-family: sans-serif;
+}
+
+h1, h2, h3 {
+  padding: 1rem;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-size: 1.3rem;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* center children elements horizontally */
+  flex: 1;
+  color: white;
+}
+
+.bg-dark {
+  background-color: #12002b;
+}
+
+a {
+  border-color: #00bc77;
+  border: 0.1rem solid #00bc77;
+  background-color: #00bc77;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  font-size: 1.5rem;
+  padding: 1rem 1.4rem;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  transition-duration: 0.5s;
+  margin-top: 2rem;
+  width: 30rem;
+
+  &:hover {
+    background-color: white;
+    color: #00bc77;
+  }
+}
+
+input[type=text],
+input[type=date],
+input[type=number],
+select {
+  padding: 0.6rem 1rem;
+  font-size: 1.5rem;
+}
+
+.button-save {
+  border-color: #00bc77;
+  background-color: #00bc77;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  padding: 10px;
+  width: 30rem;
+  border-radius: 0.5rem;
+  transition-duration: 0.5s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: white;
+    color: #00bc77;
+  }
+}
+
+form#create-employee {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-top: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.address {
+  margin-top: 1.5rem;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  width: 30rem;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 12rem; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+  /* Modal Content */
+  > .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 2rem;
+    border: 0.1rem solid #888;
+    width: 80%;
+    height: 15rem;
+  
+    > p {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #12002b;
+      text-align: center;
+      margin-top: 5rem;
+    }
+
+    /* The Close Button */
+    > .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 2.8rem;
+      font-weight: bold;
+
+      &:hover,
+      &:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.invalid-field {
+  margin-top: 0.3rem;
+  color: red;
+}
+
+
