@@ -6,6 +6,7 @@ import {
   setButtonSaveClicked,
   resetFlags,
 } from "../../redux/actions";
+import { v4 as uuidv4 } from 'uuid';
 import Header from "../../components/Header/Header";
 import DatePicker from "../../components/DatePicker/DatePicker";
 import Modal from "../../components/Modal/Modal";
@@ -56,6 +57,7 @@ const CreateEmployee = (props) => {
       e.preventDefault();
     } else {
       const employee = {
+        id: uuidv4(),
         firstName: firstName,
         lastName: lastName,
         dateOfBirth: dateOfBirth,
