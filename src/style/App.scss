@@ -39,6 +39,10 @@ h1, h2, h3 {
   align-items: center;
 }
 
+/** 
+* Page CreateEmployee 
+*/
+
 .container {
   display: flex;
   flex-direction: column;
@@ -170,3 +174,10 @@ label {
 }
 
 
+/** 
+* Page ListEmployees
+*/
+
+.list-employee-container {
+
+}

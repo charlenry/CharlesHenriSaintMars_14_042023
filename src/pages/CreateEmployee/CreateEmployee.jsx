@@ -9,7 +9,7 @@ import {
 import Header from "../../components/Header/Header";
 import DatePicker from "../../components/DatePicker/DatePicker";
 import Modal from "../../components/Modal/Modal";
-// import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const CreateEmployee = (props) => {
   const { rdxDepartments, rdxStates, isButtonSaveClicked, isEmployeeCreated } =
@@ -102,7 +102,7 @@ const CreateEmployee = (props) => {
     <>
       <Header />
       <div className="container bg-dark">
-        <a href="employee-list.html">View Current Employees</a>
+        <Link to="/list-employees">View Current Employees</Link>
         <h2>Create Employee</h2>
         <form action="#" id="create-employee">
           <label htmlFor="first-name">First Name</label>

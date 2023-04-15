@@ -1,10 +1,14 @@
+import { Link } from "react-router-dom";
+import Header from "../../components/Header/Header";
+
 const ListEmployees = (props) => {
   return (
     <>
-      <div id="employee-div" className="container">
-        <h1>Current Employees</h1>
-        <table id="employee-table" className="display"></table>
-        <a href="index.html">Home</a>
+      <Header />
+      <div id="list-employee-container" className="container bg-dark">
+        <h1>Current Employees <br/> (in development)</h1>
+        <table id="employees-table" className="display"></table>
+        <Link to="/">Home</Link>
       </div>
     </>
   );
