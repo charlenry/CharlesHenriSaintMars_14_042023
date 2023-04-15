@@ -3,9 +3,9 @@ import { departments } from "../../data/departments";
 import { states } from "../../data/states";
 
 const INITIAL_STATE = {
-  rdxEmployees: {...employees},
-  rdxDepartments: departments,
-  rdxStates: states,
+  rdxEmployees: [...employees],
+  rdxDepartments: [...departments],
+  rdxStates: [...states],
   isButtonSaveClicked: false,
   isEmployeeCreated: false,
 };
@@ -16,7 +16,7 @@ const employeesReducer = (state = INITIAL_STATE, action) => {
       employees.push(action.payload);
       return {
         ...state,
-        rdxEmployees: {...employees},
+        rdxEmployees: [...employees],
         isEmployeeCreated: true,
       };
     case "BUTTON_SAVED_CLICKED":
