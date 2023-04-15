@@ -6,7 +6,7 @@ const ListEmployees = (props) => {
   return (
     <>
       <Header />
-      <div id="list-employee-container" className="container bg-dark">
+      <div id="list-employee-container" className="bg-dark">
         <DataTable />
         <Link to="/">Home</Link>
       </div>

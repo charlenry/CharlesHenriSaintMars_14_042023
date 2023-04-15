@@ -1,11 +1,25 @@
+import './DataTable.scss'
 // import { useState } from "react";
-// import { useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import {
+  fa5_solid_sort,
+  fa5_solid_sortUp,
+  fa5_solid_sortDown,
+} from "fontawesome-svgs";
 
 const DataTable = (props) => {
   const { rdxEmployees } = useSelector((state) => ({
     ...state.employeesReducer,
   }));
+
+  useEffect(() => {
+    const allSortIcons = document.querySelectorAll(".solid-sort");
+    allSortIcons.forEach(icon => icon.innerHTML = fa5_solid_sort);
+    document.querySelector(".solid-sort-up").innerHTML = fa5_solid_sortUp;
+    // document.querySelector(".solid-sort-down").innerHTML = fa5_solid_sortDown;
+
+  }, []);
 
   return (
     <div className="table-container">
@@ -13,30 +27,30 @@ const DataTable = (props) => {
       <table id="employees-table" className="table">
         <thead>
           <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Start Date</th>
-            <th>Department</th>
-            <th>Date of Birth</th>
-            <th>Street</th>
-            <th>City</th>
-            <th>State</th>
-            <th>Zip Code</th>
+            <th>First Name&nbsp;<i className="solid-sort-up"></i></th>
+            <th>Last Name&nbsp;<i className="solid-sort"></i></th>
+            <th>Start Date&nbsp;<i className="solid-sort"></i></th>
+            <th>Department&nbsp;<i className="solid-sort"></i></th>
+            <th>Date of Birth&nbsp;<i className="solid-sort"></i></th>
+            <th>Street&nbsp;<i className="solid-sort"></i></th>
+            <th>City&nbsp;<i className="solid-sort"></i></th>
+            <th>State&nbsp;<i className="solid-sort"></i></th>
+            <th>Zip Code&nbsp;<i className="solid-sort"></i></th>
           </tr>
         </thead>
         <tbody>
           {rdxEmployees.map((state) => {
             return (
               <tr key={state.id}>
-                <td>{state.firstName}</td>
-                <td>{state.lastName}</td>
-                <td>{state.startDate}</td>
-                <td>{state.department}</td>
-                <td>{state.dateOfBirth}</td>
-                <td>{state.street}</td>
-                <td>{state.city}</td>
-                <td>{state.state}</td>
-                <td>{state.zipCode}</td>
+                <td id="firstName">{state.firstName}</td>
+                <td id="lastName">{state.lastName}</td>
+                <td id="startDate">{state.startDate}</td>
+                <td id="department">{state.department}</td>
+                <td id="dateOfBirth">{state.dateOfBirth}</td>
+                <td id="street">{state.street}</td>
+                <td id="city">{state.city}</td>
+                <td id="state">{state.state}</td>
+                <td id="zipCode">{state.zipCode}</td>
               </tr>
             );
           })}

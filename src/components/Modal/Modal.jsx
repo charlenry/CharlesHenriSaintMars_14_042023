@@ -1,3 +1,5 @@
+import './Modal.scss';
+
 const Modal = ({message, handleClose}) => {
   return (
     <div id="confirmation" className="modal">
