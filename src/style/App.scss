@@ -8,16 +8,17 @@
 }
 
 @font-face {
-  font-family: 'Roboto';
-  src: local("Roboto"),
-       url(../assets/fonts/Roboto/Roboto-Regular.ttf);
+  font-family: "Roboto";
+  src: local("Roboto"), url(../assets/fonts/Roboto/Roboto-Regular.ttf);
 }
 html {
   font-size: 62.5%;
   font-family: sans-serif;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   padding: 1rem;
 }
 
@@ -46,7 +47,7 @@ h1, h2, h3 {
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;      /* center children elements horizontally */
+  align-items: center; /* center children elements horizontally */
   flex: 1;
   color: white;
 }
@@ -78,9 +79,9 @@ a {
   }
 }
 
-input[type=text],
-input[type=date],
-input[type=number],
+input[type="text"],
+input[type="date"],
+input[type="number"],
 select {
   padding: 0.6rem 1rem;
   font-size: 1.5rem;
@@ -121,13 +122,10 @@ label {
   width: 30rem;
 }
 
-
-
 .invalid-input {
   margin-top: 0.3rem;
   color: red;
 }
-
 
 /** 
 * Page ListEmployees
@@ -142,3 +140,5 @@ label {
   margin: 0 auto;
   margin-top: 2rem;
 }
+
+

@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   createEmployee,
@@ -24,10 +23,10 @@ const CreateEmployee = (props) => {
   const [lastName, setLastName] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [startDate, setStartDate] = useState("");
-  const [department, setDepartment] = useState("");
+  const [department, setDepartment] = useState(rdxDepartments[0]);
   const [street, setStreet] = useState("");
   const [city, setCity] = useState("");
-  const [state, setState] = useState("");
+  const [state, setState] = useState(rdxStates[0].abbreviation);
   const [zipCode, setZipCode] = useState("");
   const [isDateOfBirthCorrect, setIsDateOfBirthCorrect] = useState(false);
   const [isStartDateCorrect, setIsStartDateCorrect] = useState(false);
@@ -176,6 +175,7 @@ const CreateEmployee = (props) => {
             <select
               name="state"
               id="state"
+              value={state.abbreviation}
               onChange={(e) => setState(e.target.value)}
               required
             >
@@ -207,6 +207,7 @@ const CreateEmployee = (props) => {
           <select
             name="department"
             id="department"
+            value={department}
             onChange={(e) => setDepartment(e.target.value)}
             required
           >
