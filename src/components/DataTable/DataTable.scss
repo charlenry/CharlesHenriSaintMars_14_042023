@@ -5,12 +5,11 @@
 
 .solid-sort-up,
 .solid-sort-down {
-  color: yellow;
-  font-size: 1.5rem;
+  color: lime;
+  font-size: 1.6rem;
 }
 
 .dataTable-container {
-  // background-color: lighten(lightgreen, 20%);
   overflow-x: auto;
 }
 
@@ -37,6 +36,7 @@ table > thead {
 
 table > thead > tr > th {
   text-align: center;
+  cursor: pointer;
   // font-size: 1.4rem;
 }
 
@@ -114,10 +114,15 @@ td {
     }
 
     .button-reset-search {
+      display: none;
       font-size: 2rem;
       color: black;
       margin-left: -2rem;;
       cursor: pointer;
+
+      &:hover {
+        color: red;
+      }
     }
   }
 }

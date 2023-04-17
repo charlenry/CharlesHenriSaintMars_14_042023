@@ -58,8 +58,6 @@ h3 {
 
 a {
   display: inline-block;
-  border-color: #00bc77;
-  border: 0.1rem solid #00bc77;
   background-color: #00bc77;
   color: #fff;
   font-weight: 700;
@@ -74,8 +72,8 @@ a {
   width: 30rem;
 
   &:hover {
-    background-color: white;
-    color: #00bc77;
+    background-color: darken(#00bc77, 8%);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 }
 
@@ -88,7 +86,6 @@ select {
 }
 
 .button-save {
-  border-color: #00bc77;
   background-color: #00bc77;
   color: #fff;
   font-size: 1.5rem;
@@ -96,13 +93,14 @@ select {
   letter-spacing: 0.1rem;
   padding: 10px;
   width: 30rem;
+  border: none;
   border-radius: 0.5rem;
   transition-duration: 0.5s;
   cursor: pointer;
 
   &:hover {
-    background-color: white;
-    color: #00bc77;
+    background-color: darken(#00bc77, 8%);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 }
 
@@ -139,6 +137,7 @@ label {
   display: block;
   margin: 0 auto;
   margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 
