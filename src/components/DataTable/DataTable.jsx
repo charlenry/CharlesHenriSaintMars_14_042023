@@ -1,5 +1,5 @@
 import "./DataTable.scss";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   fa5_solid_sort,
@@ -9,15 +9,89 @@ import {
 import { selectEmployees, sort } from "../../redux/actions";
 
 const DataTable = (props) => {
+  // Propsables
+  const [tableTitle] = useState("Current Employees");
+
+  // title is the column title.
+  // propertyName is the name of the property to place in column.
+  // PropertyType can be string or date or number.
+  // id is the column number. It begins at 1.
+  const [columnTitles] = useState([
+    {
+      title: "First Name",
+      propertyName: "firstName",
+      propertyType: "string",
+      id: 1,
+    },
+    {
+      title: "Last Name",
+      propertyName: "lastName",
+      propertyType: "string",
+      id: 2,
+    },
+    {
+      title: "Start Date",
+      propertyName: "startDate",
+      propertyType: "date",
+      id: 3,
+    },
+    {
+      title: "Department",
+      propertyName: "department",
+      propertyType: "string",
+      id: 4,
+    },
+    {
+      title: "Date of Birth",
+      propertyName: "dateOfBirth",
+      propertyType: "date",
+      id: 5,
+    },
+    {
+      title: "Street",
+      propertyName: "street",
+      propertyType: "string",
+      id: 6
+    },
+    {
+      title: "City",
+      propertyName: "city",
+      propertyType: "string",
+      id: 7,
+    },
+    {
+      title: "State",
+      propertyName: "state",
+      propertyType: "string",
+      id: 8,
+    },
+    {
+      title: "Zip Code",
+      propertyName: "zipCode",
+      propertyType: "number",
+      id: 9,
+    },
+  ]);
+
+  // Data
   const { rdxEmployees } = useSelector((state) => ({
     ...state.employeesReducer,
   }));
 
+  // Other local states
+  const [query, setQuery] = useState("");
+  //  true <=> desc sorting ; false <=> asc sorting
+  const [toggle, setToggle] = useState(false);
+
   const dispatch = useDispatch();
 
-  const [query, setQuery] = useState("");
-  //  true <=> asc sorting ; false <=> desc sorting 
-  const [toggle, setToggle] = useState(false);  
+  const iconsRef = useRef([]);
+
+  const addToRef = (iconRef) => {
+    if (iconRef && !iconsRef.current.includes(iconRef)) {
+      iconsRef.current.push(iconRef);
+    }
+  };
 
   useEffect(() => {
     const allSortIcons = document.querySelectorAll(".solid-sort");
@@ -53,88 +127,26 @@ const DataTable = (props) => {
   const handleSort = (column, type) => {
     setToggle(!toggle);
 
-    if (column === "firstName" && toggle === true) {
-      document.querySelector("#firstNameIcon").className = "solid-sort-up";
-    } else if (column === "firstName" && toggle === false) {
-      document.querySelector("#firstNameIcon").className = "solid-sort-down";
-    } else {
-      document.querySelector("#firstNameIcon").className = "solid-sort";
-    }
-    
-    if (column === "lastName" && toggle === true) {
-      document.querySelector("#lastNameIcon").className = "solid-sort-up";
-    } else if (column === "lastName" && toggle === false) {
-      document.querySelector("#lastNameIcon").className = "solid-sort-down";
-    } else {
-      document.querySelector("#lastNameIcon").className = "solid-sort";
-    }
-
-    if (column === "startDate" && toggle === true) {
-      document.querySelector("#startDateIcon").className = "solid-sort-up";
-    } else if (column === "startDate" && toggle === false) {
-      document.querySelector("#startDateIcon").className = "solid-sort-down";
-    } else {
-      document.querySelector("#startDateIcon").className = "solid-sort";
-    }
-
-    if (column === "department" && toggle === true) {
-      document.querySelector("#departmentIcon").className = "solid-sort-up";
-    } else if (column === "department" && toggle === false) {
-      document.querySelector("#departmentIcon").className = "solid-sort-down";
-    } else {
-      document.querySelector("#departmentIcon").className = "solid-sort";
-    }
-
-    if (column === "dateOfBirth" && toggle === true) {
-      document.querySelector("#dateOfBirthIcon").className = "solid-sort-up";
-    } else if (column === "dateOfBirth" && toggle === false) {
-      document.querySelector("#dateOfBirthIcon").className = "solid-sort-down";
-    } else {
-      document.querySelector("#dateOfBirthIcon").className = "solid-sort";
-    }
-
-    if (column === "street" && toggle === true) {
-      document.querySelector("#streetIcon").className = "solid-sort-up";
-    } else if (column === "street" && toggle === false) {
-      document.querySelector("#streetIcon").className = "solid-sort-down";
-    } else {
-      document.querySelector("#streetIcon").className = "solid-sort";
-    }
-
-    if (column === "city" && toggle === true) {
-      document.querySelector("#cityIcon").className = "solid-sort-up";
-    } else if (column === "city" && toggle === false) {
-      document.querySelector("#cityIcon").className = "solid-sort-down";
-    } else {
-      document.querySelector("#cityIcon").className = "solid-sort";
-    }
-
-    if (column === "state" && toggle === true) {
-      document.querySelector("#stateIcon").className = "solid-sort-up";
-    } else if (column === "state" && toggle === false) {
-      document.querySelector("#stateIcon").className = "solid-sort-down";
-    } else {
-      document.querySelector("#stateIcon").className = "solid-sort";
-    }
-
-    if (column === "zipCode" && toggle === true) {
-      document.querySelector("#zipCodeIcon").className = "solid-sort-up";
-    } else if (column === "zipCode" && toggle === false) {
-      document.querySelector("#zipCodeIcon").className = "solid-sort-down";
-    } else {
-      document.querySelector("#zipCodeIcon").className = "solid-sort";
-    }
+    iconsRef.current.forEach((iconRef) => {
+      if (iconRef.id === `#${column}` && toggle === true) {
+        iconRef.className = "solid-sort-up";
+      } else if (iconRef.id === `#${column}` && toggle === false) {
+        iconRef.className = "solid-sort-down";
+      } else {
+        iconRef.className = "solid-sort";
+      }
+    });
 
     if (toggle) {
       dispatch(sort(column, "asc", type));
     } else {
       dispatch(sort(column, "desc", type));
     }
-  }
+  };
 
   return (
     <div className="dataTable-container">
-      <h1 className="dataTable-title">Current Employees</h1>
+      <h1 className="dataTable-title">{tableTitle}</h1>
 
       <div className="dataTable-content">
         <div className="filters-container">
@@ -165,36 +177,27 @@ const DataTable = (props) => {
         <table id="employees-table" className="table">
           <thead>
             <tr>
-              <th onClick={() => handleSort("firstName", "string")}>
-                First Name&nbsp;<i id="firstNameIcon" className="solid-sort-up"></i>
-              </th>
-              <th onClick={() => handleSort("lastName", "string")}>
-                Last Name&nbsp;<i id="lastNameIcon" className="solid-sort"></i>
-              </th>
-              <th onClick={() => handleSort("startDate", "date")}>
-                Start Date&nbsp;<i id="startDateIcon" className="solid-sort"></i>
-              </th>
-              <th onClick={() => handleSort("department", "string")}>
-                Department&nbsp;<i id="departmentIcon" className="solid-sort"></i>
-              </th>
-              <th onClick={() => handleSort("dateOfBirth", "date")}>
-                Date of Birth&nbsp;<i id="dateOfBirthIcon" className="solid-sort"></i>
-              </th>
-              <th onClick={() => handleSort("street", "string")}>
-                Street&nbsp;<i id="streetIcon" className="solid-sort"></i>
-              </th>
-              <th onClick={() => handleSort("city", "string")}>
-                City&nbsp;<i id="cityIcon" className="solid-sort"></i>
-              </th>
-              <th onClick={() => handleSort("state", "string")}>
-                State&nbsp;<i id="stateIcon" className="solid-sort"></i>
-              </th>
-              <th onClick={() => handleSort("zipCode", "number")}>
-                Zip Code&nbsp;<i id="zipCodeIcon" className="solid-sort"></i>
-              </th>
+              {columnTitles.map((column) => {
+                return (
+                  <th
+                    key={column.propertyName}
+                    onClick={() =>
+                      handleSort(column.propertyName, column.propertyType)
+                    }
+                  >
+                    {column.title}{" "}
+                    <i
+                      ref={addToRef}
+                      id={`#${column.propertyName}`}
+                      className={(column.id === 1) ? "solid-sort-up" : "solid-sort"}
+                    ></i>
+                  </th>
+                );
+              })}
             </tr>
           </thead>
           <tbody>
+            {/* To customize */}
             {rdxEmployees.map((state) => {
               return (
                 <tr key={state.id}>
