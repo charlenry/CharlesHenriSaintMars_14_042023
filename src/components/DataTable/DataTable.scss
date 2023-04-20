@@ -137,6 +137,10 @@ td {
   margin-top: 0.5rem;
   padding: 1.5rem 0;
 
+  .pagination-overview {
+    margin-right: 2rem;
+  }
+
   .paginationBtns {
     width: 100%;
     height: 4rem;
@@ -171,6 +175,16 @@ td {
 
   .previousBtn, .nextBtn {
     display: inline;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .pagination-container {
+    flex-wrap: wrap;
+
+    .pagination-overview {
+      margin-bottom: 2rem;
+    }
   }
 }
 

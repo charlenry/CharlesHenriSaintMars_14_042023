@@ -7,7 +7,7 @@ import {
   fa5_solid_sortDown,
 } from "fontawesome-svgs";
 import { selectEmployees, sort } from "../../redux/actions";
-import ReactPaginate from 'react-paginate';
+import ReactPaginate from "react-paginate";
 
 const DataTable = (props) => {
   // Propsables
@@ -85,7 +85,9 @@ const DataTable = (props) => {
   const [toggle, setToggle] = useState(false);
   const [linesPerPage] = useState([10, 25, 50, 100]);
   const [linesPerPageSelected, setLinesPerPageSelected] = useState(10);
-  const [pageCount, setPageCount] = useState(Math.ceil(rdxEmployees.length / Number(linesPerPageSelected)));
+  const [pageCount, setPageCount] = useState(
+    Math.ceil(rdxEmployees.length / Number(linesPerPageSelected))
+  );
   const [currentPage, setCurrentPage] = useState(0);
   const [nextSelectedPage, setNextSelectedPage] = useState(0);
 
@@ -109,15 +111,28 @@ const DataTable = (props) => {
       );
     });
 
-  const handlePageChange = ({selected}) => {
+  const handlePageChange = ({ selected }) => {
     setCurrentPage(Number(selected));
-  }
+  };
 
   const handlePageClick = (e) => {
-    if (Number(e.nextSelectedPage) > pageCount && e.isNext === true) return false;
-    if (Number(e.nextSelectedPage) > pageCount && e.isPrevious === true) return false;
+    if (
+      (Number(e.nextSelectedPage) > pageCount ||
+        e.nextSelectedPage === undefined) &&
+        e.isNext === true
+    ) {
+      return false;
+    }
+    if (
+      (Number(e.nextSelectedPage) > pageCount ||
+        e.nextSelectedPage === undefined) &&
+        e.isPrevious === true
+    ) {
+      return false;
+    }
+
     setNextSelectedPage(Number(e.nextSelectedPage));
-  }
+  };
 
   const dispatch = useDispatch();
 
@@ -127,7 +142,6 @@ const DataTable = (props) => {
       iconsRef.current.push(iconRef);
     }
   };
-
 
   useEffect(() => {
     const allSortIcons = document.querySelectorAll(".solid-sort");
@@ -146,7 +160,6 @@ const DataTable = (props) => {
     setPageCount(Math.ceil(rdxEmployees.length / Number(linesPerPageSelected)));
     setCurrentPage(0);
   }, [linesPerPageSelected, pageCount, rdxEmployees.length]);
-
 
   const handleSearch = (q) => {
     setQuery(q);
@@ -255,17 +268,19 @@ const DataTable = (props) => {
         </table>
 
         <div className="pagination-container">
-          <div>
-            Showing {pagesVisited  + 1} to {((pagesVisited + linesPerPageSelected) <= rdxEmployees.length) ? (pagesVisited + linesPerPageSelected) : rdxEmployees.length} of {rdxEmployees.length}{" "}entries
+          <div className="pagination-overview">
+            Showing&nbsp;{pagesVisited + 1}&nbsp;to&nbsp;{pagesVisited + linesPerPageSelected <= rdxEmployees.length
+              ? pagesVisited + linesPerPageSelected
+              : rdxEmployees.length}&nbsp;of&nbsp;{rdxEmployees.length}&nbsp;entries
           </div>
           <div>
-            <ReactPaginate 
+            <ReactPaginate
               previousLabel={"Previous"}
               nextLabel={"Next"}
               pageCount={pageCount}
               onPageChange={handlePageChange}
               onClick={handlePageClick}
-              forcePage={(nextSelectedPage >= pageCount || nextSelectedPage === undefined) ? (pageCount - 1) : 0}
+              forcePage={(nextSelectedPage >= pageCount || nextSelectedPage === undefined) && 0}
               containerClassName={"paginationBtns"}
               previousLinkClassName={"previousBtn"}
               nextLinkClassName={"nextBtn"}
