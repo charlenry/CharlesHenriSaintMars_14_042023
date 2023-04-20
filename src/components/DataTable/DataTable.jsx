@@ -114,9 +114,9 @@ const DataTable = (props) => {
   }
 
   const handlePageClick = (e) => {
-    if (e.nextSelectedPage > pageCount && e.isNext === true) return false;
-    if (e.nextSelectedPage > pageCount && e.isPrevious === true) return false;
-    setNextSelectedPage(e.nextSelectedPage);
+    if (Number(e.nextSelectedPage) > pageCount && e.isNext === true) return false;
+    if (Number(e.nextSelectedPage) > pageCount && e.isPrevious === true) return false;
+    setNextSelectedPage(Number(e.nextSelectedPage));
   }
 
   const dispatch = useDispatch();
@@ -265,7 +265,7 @@ const DataTable = (props) => {
               pageCount={pageCount}
               onPageChange={handlePageChange}
               onClick={handlePageClick}
-              forcePage={(nextSelectedPage >= pageCount) ? (pageCount - 1) : ""}
+              forcePage={(nextSelectedPage >= pageCount || nextSelectedPage === undefined) ? (pageCount - 1) : 0}
               containerClassName={"paginationBtns"}
               previousLinkClassName={"previousBtn"}
               nextLinkClassName={"nextBtn"}
