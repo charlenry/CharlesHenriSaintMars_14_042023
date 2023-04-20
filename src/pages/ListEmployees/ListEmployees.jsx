@@ -8,7 +8,7 @@ const ListEmployees = (props) => {
       <Header />
       <div id="list-employee-container" className="bg-dark">
         <DataTable />
-        <Link to="/">Home</Link>
+        <Link className="button-link" to="/">Home</Link>
       </div>
     </>
   );

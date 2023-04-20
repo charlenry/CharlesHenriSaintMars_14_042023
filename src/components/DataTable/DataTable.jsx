@@ -7,6 +7,7 @@ import {
   fa5_solid_sortDown,
 } from "fontawesome-svgs";
 import { selectEmployees, sort } from "../../redux/actions";
+import ReactPaginate from 'react-paginate';
 
 const DataTable = (props) => {
   // Propsables
@@ -51,7 +52,7 @@ const DataTable = (props) => {
       title: "Street",
       propertyName: "street",
       propertyType: "string",
-      id: 6
+      id: 6,
     },
     {
       title: "City",
@@ -82,16 +83,51 @@ const DataTable = (props) => {
   const [query, setQuery] = useState("");
   //  true <=> desc sorting ; false <=> asc sorting
   const [toggle, setToggle] = useState(false);
+  const [linesPerPage] = useState([10, 25, 50, 100]);
+  const [linesPerPageSelected, setLinesPerPageSelected] = useState(10);
+  const [pageCount, setPageCount] = useState(Math.ceil(rdxEmployees.length / Number(linesPerPageSelected)));
+  const [currentPage, setCurrentPage] = useState(0);
+  const [nextSelectedPage, setNextSelectedPage] = useState(0);
+
+  // Pagination
+  const pagesVisited = currentPage * Number(linesPerPageSelected);
+  const renderEmployees = rdxEmployees
+    .slice(pagesVisited, pagesVisited + linesPerPageSelected)
+    .map((employee) => {
+      return (
+        <tr key={employee.id}>
+          <td>{employee.firstName}</td>
+          <td>{employee.lastName}</td>
+          <td>{employee.startDate}</td>
+          <td>{employee.department}</td>
+          <td>{employee.dateOfBirth}</td>
+          <td>{employee.street}</td>
+          <td>{employee.city}</td>
+          <td>{employee.state}</td>
+          <td>{employee.zipCode}</td>
+        </tr>
+      );
+    });
+
+  const handlePageChange = ({selected}) => {
+    setCurrentPage(Number(selected));
+  }
+
+  const handlePageClick = (e) => {
+    if (e.nextSelectedPage > pageCount && e.isNext === true) return false;
+    if (e.nextSelectedPage > pageCount && e.isPrevious === true) return false;
+    setNextSelectedPage(e.nextSelectedPage);
+  }
 
   const dispatch = useDispatch();
 
   const iconsRef = useRef([]);
-
   const addToRef = (iconRef) => {
     if (iconRef && !iconsRef.current.includes(iconRef)) {
       iconsRef.current.push(iconRef);
     }
   };
+
 
   useEffect(() => {
     const allSortIcons = document.querySelectorAll(".solid-sort");
@@ -105,6 +141,12 @@ const DataTable = (props) => {
   useEffect(() => {
     dispatch(sort("firstName", "asc", "string"));
   }, [dispatch]);
+
+  useEffect(() => {
+    setPageCount(Math.ceil(rdxEmployees.length / Number(linesPerPageSelected)));
+    setCurrentPage(0);
+  }, [linesPerPageSelected, pageCount, rdxEmployees.length]);
+
 
   const handleSearch = (q) => {
     setQuery(q);
@@ -152,11 +194,19 @@ const DataTable = (props) => {
         <div className="filters-container">
           <div className="entries-container">
             <label htmlFor="entries">Show</label>
-            <select name="entries" id="entries">
-              <option value="10">10</option>
-              <option value="25">25</option>
-              <option value="50">50</option>
-              <option value="100">100</option>
+            <select
+              name="entries"
+              id="entries"
+              value={linesPerPageSelected}
+              onChange={(e) => setLinesPerPageSelected(Number(e.target.value))}
+            >
+              {linesPerPage.map((linesNumber) => {
+                return (
+                  <option key={linesNumber} value={linesNumber}>
+                    {linesNumber}
+                  </option>
+                );
+              })}
             </select>
             <p>entries</p>
           </div>
@@ -189,7 +239,9 @@ const DataTable = (props) => {
                     <i
                       ref={addToRef}
                       id={`#${column.propertyName}`}
-                      className={(column.id === 1) ? "solid-sort-up" : "solid-sort"}
+                      className={
+                        column.id === 1 ? "solid-sort-up" : "solid-sort"
+                      }
                     ></i>
                   </th>
                 );
@@ -197,25 +249,31 @@ const DataTable = (props) => {
             </tr>
           </thead>
           <tbody>
-            {/* To customize */}
-            {rdxEmployees.map((state) => {
-              return (
-                <tr key={state.id}>
-                  <td>{state.firstName}</td>
-                  <td>{state.lastName}</td>
-                  <td>{state.startDate}</td>
-                  <td>{state.department}</td>
-                  <td>{state.dateOfBirth}</td>
-                  <td>{state.street}</td>
-                  <td>{state.city}</td>
-                  <td>{state.state}</td>
-                  <td>{state.zipCode}</td>
-                </tr>
-              );
-            })}
+            {/* To customize, see above. */}
+            {renderEmployees}
           </tbody>
         </table>
-        <div className="pagination-container"></div>
+
+        <div className="pagination-container">
+          <div>
+            Showing {pagesVisited  + 1} to {((pagesVisited + linesPerPageSelected) <= rdxEmployees.length) ? (pagesVisited + linesPerPageSelected) : rdxEmployees.length} of {rdxEmployees.length}{" "}entries
+          </div>
+          <div>
+            <ReactPaginate 
+              previousLabel={"Previous"}
+              nextLabel={"Next"}
+              pageCount={pageCount}
+              onPageChange={handlePageChange}
+              onClick={handlePageClick}
+              forcePage={(nextSelectedPage >= pageCount) ? (pageCount - 1) : ""}
+              containerClassName={"paginationBtns"}
+              previousLinkClassName={"previousBtn"}
+              nextLinkClassName={"nextBtn"}
+              disabledClassName={"paginationDisabled"}
+              activeClassName={"paginationActive"}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -103,7 +103,7 @@ const CreateEmployee = (props) => {
     <>
       <Header />
       <div className="container bg-dark">
-        <Link to="/list-employees">View Current Employees</Link>
+        <Link className="button-link" to="/list-employees">View Current Employees</Link>
         <h2>Create Employee</h2>
         <form action="#" id="create-employee">
           <label htmlFor="first-name">First Name</label>
