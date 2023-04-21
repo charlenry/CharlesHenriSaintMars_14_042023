@@ -104,7 +104,7 @@ const DataTable = (props) => {
 
   /* Begin of pagination management */
   const pagesVisited = currentPage * Number(linesPerPageSelected);
-  const resultPagination = rdxEmployees
+  const paginationResult = rdxEmployees
     .slice(pagesVisited, pagesVisited + linesPerPageSelected)
     .map((employee) => {
       return (
@@ -130,7 +130,7 @@ const DataTable = (props) => {
         </td>
       </tr>
     ) : (
-      resultPagination
+      paginationResult
     );
 
   /**

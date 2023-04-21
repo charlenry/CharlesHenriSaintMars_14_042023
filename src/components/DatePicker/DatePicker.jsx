@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 /**
  * This is defining a functional component called `DatePicker` that takes in three props: `htmlFor`, `label`, and `handlerFunc`. These props are destructured from the props object passed to the component.
+ * It allows a user to choose a date in a calendar. Most of browsers support this date picker. For those who do not support it, the user can enter the date himself in YYYY-MM-DD format.
  * Component's Hierarchy: CreateEmployee > DatePicker
  * 
  * @component
@@ -31,7 +32,7 @@ const DatePicker = ({ htmlFor, label, handlerFunc }) => {
       <input
         id={htmlFor}
         type="text"
-        placeholder="yyyy-dd-mm"
+        placeholder="YYYY-MM-DD"
         onChange={handlerFunc}
         required
       />
