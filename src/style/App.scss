@@ -58,8 +58,8 @@ h3 {
 
 .button-link {
   display: inline-block;
-  background-color: #00bc77;
-  color: #fff;
+  background-color: lighten(#00bc77, 8%);
+  color: black;
   font-weight: 700;
   letter-spacing: 0.1rem;
   font-size: 1.5rem;
@@ -72,7 +72,7 @@ h3 {
   width: 30rem;
 
   &:hover {
-    background-color: darken(#00bc77, 8%);
+    background-color: #00bc77;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 }
@@ -82,13 +82,13 @@ input[type="date"],
 input[type="number"],
 select {
   padding: 0.6rem 1rem;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
 }
 
 .button-save {
-  background-color: #00bc77;
-  color: #fff;
-  font-size: 1.5rem;
+  background-color: lighten(#00bc77, 8%);;
+  color: black;
+  font-size: 1.6rem;
   font-weight: 600;
   letter-spacing: 0.1rem;
   padding: 10px;
@@ -99,7 +99,7 @@ select {
   cursor: pointer;
 
   &:hover {
-    background-color: darken(#00bc77, 8%);
+    background-color:#00bc77;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 }
@@ -122,7 +122,7 @@ label {
 
 .invalid-input {
   margin-top: 0.3rem;
-  color: red;
+  color: #FFAD16;
 }
 
 /** 

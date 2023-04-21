@@ -121,7 +121,7 @@ td {
       cursor: pointer;
 
       &:hover {
-        color: red;
+        color: #B00000;
       }
     }
   }
@@ -153,24 +153,24 @@ td {
       margin: 0.4rem;
       background-color: white;
       color: black;
+      font-weight: bold;
       border-radius: 0.3rem;
-      border: 0.1rem solid #00bc77;
+      border: 0.1rem solid lighten(#00bc77, 8%);
       transition-duration: 0.4s;
       cursor: pointer;
 
       &:hover {
         background-color: #00bc77;
-        color: white;
+        color: black;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        background-color: darken(#00bc77, 9%);
-        border: 0.1rem solid darken(#00bc77, 9%);
+        border: 0.1rem solid #00bc77;
       }
     }
   }
 
   .paginationActive a {
-    background-color: #00bc77;
-    color: white;
+    background-color: lighten(#00bc77, 8%);
+    color: black;
   }  
 
   .previousBtn, .nextBtn {
