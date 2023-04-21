@@ -314,7 +314,7 @@ const DataTable = (props) => {
             <p>entries</p>
           </div>
           <div className="search-container">
-            <label htmlFor="search">Search</label>
+            <label htmlFor="search">Search:</label>
             <input
               id="search"
               type="text"
