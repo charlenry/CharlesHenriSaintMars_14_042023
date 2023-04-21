@@ -338,7 +338,7 @@ const DataTable = (props) => {
                       handleSort(column.propertyName, column.propertyType)
                     }
                   >
-                    {column.title}{" "}
+                    <span>{column.title}&nbsp;&nbsp;</span>
                     <i
                       ref={addToRef}
                       id={`#${column.propertyName}`}
