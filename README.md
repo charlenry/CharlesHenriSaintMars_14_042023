@@ -11,3 +11,6 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000/CharlesHenriSaintMars_14_042023/build](http://localhost:3000/CharlesHenriSaintMars_14_042023/build) to view it in your browser.
 
+## JSDoc
+
+The JSDoc is accessible at the address [https://charlenry.github.io/CharlesHenriSaintMars_14_042023/docs/](https://charlenry.github.io/CharlesHenriSaintMars_14_042023/docs/).

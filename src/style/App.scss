@@ -140,4 +140,17 @@ label {
   margin-bottom: 2rem;
 }
 
+.notfound {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
+  p {
+    font-size: 1.5rem;
+  }
+}

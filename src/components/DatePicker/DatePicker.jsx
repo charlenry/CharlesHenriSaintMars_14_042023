@@ -1,6 +1,19 @@
 import "./DatePicker.scss";
 import { useEffect } from "react";
+import PropTypes from "prop-types";
 
+/**
+ * This is defining a functional component called `DatePicker` that takes in three props: `htmlFor`, `label`, and `handlerFunc`. These props are destructured from the props object passed to the component.
+ * Component's Hierarchy: CreateEmployee > DatePicker
+ * 
+ * @component
+ * @name DatePicker
+ * @kind function
+ * @param {string} htmlFor - The content of the attribute htmlFor
+ * @param {string} label - The content of the label element
+ * @param {callback} handlerFunc - The callback that handles the user's choice for a date
+ * @returns { JSX.Element }
+ */
 const DatePicker = ({ htmlFor, label, handlerFunc }) => {
   useEffect(() => {
     const date = document.querySelector(`#${htmlFor}`);
@@ -24,6 +37,13 @@ const DatePicker = ({ htmlFor, label, handlerFunc }) => {
       />
     </div>
   );
+};
+
+// PropTypes
+DatePicker.propTypes = {
+  htmlFor: PropTypes.string,
+  label: PropTypes.string,
+  handlerFunc: PropTypes.func,
 };
 
 export default DatePicker;
