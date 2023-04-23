@@ -1,12 +1,6 @@
 import "./DataTable.scss";
 import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  fa5_solid_sort,
-  fa5_solid_sortUp,
-  fa5_solid_sortDown,
-} from "fontawesome-svgs";
-import { selectEmployees, sort } from "../../redux/actions";
 import ReactPaginate from "react-paginate";
 
 /**
@@ -204,22 +198,15 @@ const DataTable = (props) => {
   };
 
   useEffect(() => {
-    const allSortIcons = document.querySelectorAll(".solid-sort");
-    allSortIcons.forEach((icon) => (icon.innerHTML = fa5_solid_sort));
-    const allSortUpIcons = document.querySelectorAll(".solid-sort-up");
-    allSortUpIcons.forEach((icon) => (icon.innerHTML = fa5_solid_sortUp));
-    const allSortDownIcons = document.querySelectorAll(".solid-sort-down");
-    allSortDownIcons.forEach((icon) => (icon.innerHTML = fa5_solid_sortDown));
-  }, [query, toggle]);
-
-  useEffect(() => {
-    dispatch(sort("firstName", "asc", "string"));
+    import("../../redux/actions").then((action) => {
+      dispatch(action.sort("firstName", "asc", "string"));
+    });
   }, [dispatch]);
 
   useEffect(() => {
     setPageCount(Math.ceil(rdxEmployees.length / Number(linesPerPageSelected)));
     setCurrentPage(0);
-  }, [linesPerPageSelected, pageCount, rdxEmployees.length]);
+  }, [linesPerPageSelected, pageCount, rdxEmployees.length, query, toggle]);
 
   // Events processing
 
@@ -239,8 +226,10 @@ const DataTable = (props) => {
     } else {
       document.querySelector(".button-reset-search").style.display = "block";
     }
-    dispatch(selectEmployees(q));
-    dispatch(sort("firstName", "asc", "string"));
+    import("../../redux/actions").then((action) => {
+      dispatch(action.selectEmployees(q));
+      dispatch(action.sort("firstName", "asc", "string"));
+    });
   };
 
   /**
@@ -255,8 +244,10 @@ const DataTable = (props) => {
   const handleResetSearch = () => {
     setQuery("");
     document.querySelector(".button-reset-search").style.display = "none";
-    dispatch(selectEmployees(""));
-    dispatch(sort("firstName", "asc", "string"));
+    import("../../redux/actions").then((action) => {
+      dispatch(action.selectEmployees(""));
+      dispatch(action.sort("firstName", "asc", "string"));
+    });
   };
 
   /**
@@ -274,18 +265,22 @@ const DataTable = (props) => {
 
     iconsRef.current.forEach((iconRef) => {
       if (iconRef.id === `#${column}` && toggle === true) {
-        iconRef.className = "solid-sort-up";
+        iconRef.className = "fas fa-sort-up";
       } else if (iconRef.id === `#${column}` && toggle === false) {
-        iconRef.className = "solid-sort-down";
+        iconRef.className = "fas fa-sort-down";
       } else {
-        iconRef.className = "solid-sort";
+        iconRef.className = "fas fa-sort";
       }
     });
 
     if (toggle) {
-      dispatch(sort(column, "asc", type));
+      import("../../redux/actions").then((action) => {
+        dispatch(action.sort(column, "asc", type));
+      });
     } else {
-      dispatch(sort(column, "desc", type));
+      import("../../redux/actions").then((action) => {
+        dispatch(action.sort(column, "desc", type));
+      });
     }
   };
 
@@ -343,7 +338,7 @@ const DataTable = (props) => {
                       ref={addToRef}
                       id={`#${column.propertyName}`}
                       className={
-                        column.id === 1 ? "solid-sort-up" : "solid-sort"
+                        column.id === 1 ? "fas fa-sort-up" : "fas fa-sort"
                       }
                     ></i>
                   </th>

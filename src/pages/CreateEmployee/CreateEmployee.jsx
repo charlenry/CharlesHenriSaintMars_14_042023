@@ -1,10 +1,5 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  createEmployee,
-  setButtonSaveClicked,
-  resetFlags,
-} from "../../redux/actions";
 import { v4 as uuidv4 } from 'uuid';
 import Header from "../../components/Header/Header";
 import DatePicker from "../../components/DatePicker/DatePicker";
@@ -55,7 +50,9 @@ const CreateEmployee = (props) => {
    * @returns {void}
    */
   const handleSave = (e) => {
-    dispatch(setButtonSaveClicked());
+    import("../../redux/actions").then((action) => {
+      dispatch(action.setButtonSaveClicked());
+    });
     setIsDateOfBirthCorrect(datePattern.test(dateOfBirth));
     setIsStartDateCorrect(datePattern.test(startDate));
 
@@ -86,7 +83,9 @@ const CreateEmployee = (props) => {
         state: state,
         zipCode: zipCode,
       };
-      dispatch(createEmployee(employee));
+      import("../../redux/actions").then((action) => {
+        dispatch(action.createEmployee(employee));
+      });
     }
   };
 
@@ -114,7 +113,9 @@ const CreateEmployee = (props) => {
     setCity("");
     setState("");
     setZipCode("");
-    dispatch(resetFlags());
+    import("../../redux/actions").then((action) => {
+      dispatch(action.resetFlags());
+    });
   };
 
   useEffect(() => {    
