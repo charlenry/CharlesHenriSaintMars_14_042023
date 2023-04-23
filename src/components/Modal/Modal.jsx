@@ -14,7 +14,7 @@ import PropTypes from "prop-types";
  */
 const Modal = ({message, handleClose}) => {
   return (
-    <div id="confirmation" className="modal">
+    <div id="modalId" className="modal">
       <div className="modal-content">
         {/* Modal content */}
         <span className="close" onClick={handleClose}>

@@ -35,11 +35,21 @@ const CreateEmployee = (props) => {
   const [zipCode, setZipCode] = useState("");
   const [isDateOfBirthCorrect, setIsDateOfBirthCorrect] = useState(false);
   const [isStartDateCorrect, setIsStartDateCorrect] = useState(false);
+  const [modal, setModal] = useState("");
   // Control of the dates from 1900 to 2999
   const [datePattern] = useState(
     /^((19[0-9]{2})|(2[0-9]{3}))-((0[1-9])|(1[0-2]))-((0[1-9])|(1[0-9])|(2[0-9])|(3[0-1]))$/
   );
 
+  useEffect(() => {    
+    setIsDateOfBirthCorrect(datePattern.test(dateOfBirth));
+    setIsStartDateCorrect(datePattern.test(startDate));
+    
+    setModal(document.getElementById("modalId"));
+    if (isEmployeeCreated) {
+      modal.style.display = "block";
+    }
+  }, [dispatch, isEmployeeCreated, datePattern, dateOfBirth, startDate, modal.style]);
 
   /**
    * `handleSave` is a function that is called when the "Save" button is clicked. It dispatches actions to update the Redux store with the new employee data. It also handles input validation by checking if all required fields are filled out and if the date inputs match the required pattern. If any of the inputs are invalid, it prevents the default form submission behavior. If all inputs are valid, it creates a new employee object with the input values and dispatches the `createEmployee` action with the new employee object as an argument.
@@ -101,9 +111,7 @@ const CreateEmployee = (props) => {
    */
   const handleCloseModal = (e) => {
     // e.preventDefault();
-    const confirmation = document.getElementById("confirmation");
-    confirmation.style.display = "none";
-    document.getElementById("create-employee").reset();
+    document.getElementById("create-employee").reset();      
     setFirstName("");
     setLastName("");
     setDateOfBirth("");
@@ -114,20 +122,10 @@ const CreateEmployee = (props) => {
     setState("");
     setZipCode("");
     import("../../redux/actions").then((action) => {
+      modal.style.display = "none"; 
       dispatch(action.resetFlags());
     });
   };
-
-  useEffect(() => {    
-    setIsDateOfBirthCorrect(datePattern.test(dateOfBirth));
-    setIsStartDateCorrect(datePattern.test(startDate));
-    
-    const confirmation = document.getElementById("confirmation");
-    if (isEmployeeCreated) {
-      confirmation.style.display = "block";
-    }
-  }, [dispatch, isEmployeeCreated, datePattern, dateOfBirth, startDate]);
-
 
   return (
     <>
