@@ -1,16 +1,17 @@
 {
   "files": {
     "main.css": "/CharlesHenriSaintMars_14_042023/build/static/css/main.cd055b6e.css",
-    "main.js": "/CharlesHenriSaintMars_14_042023/build/static/js/main.854aa33a.js",
+    "main.js": "/CharlesHenriSaintMars_14_042023/build/static/js/main.c3bbb25e.js",
     "static/js/459.e27c1cef.chunk.js": "/CharlesHenriSaintMars_14_042023/build/static/js/459.e27c1cef.chunk.js",
     "static/media/Roboto-Regular.ttf": "/CharlesHenriSaintMars_14_042023/build/static/media/Roboto-Regular.fc2b5060f7accec5cf74.ttf",
+    "static/media/logo.jpg": "/CharlesHenriSaintMars_14_042023/build/static/media/logo.477fab5a07561e4350b5.jpg",
     "index.html": "/CharlesHenriSaintMars_14_042023/build/index.html",
     "main.cd055b6e.css.map": "/CharlesHenriSaintMars_14_042023/build/static/css/main.cd055b6e.css.map",
-    "main.854aa33a.js.map": "/CharlesHenriSaintMars_14_042023/build/static/js/main.854aa33a.js.map",
+    "main.c3bbb25e.js.map": "/CharlesHenriSaintMars_14_042023/build/static/js/main.c3bbb25e.js.map",
     "459.e27c1cef.chunk.js.map": "/CharlesHenriSaintMars_14_042023/build/static/js/459.e27c1cef.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.cd055b6e.css",
-    "static/js/main.854aa33a.js"
+    "static/js/main.c3bbb25e.js"
   ]
 }

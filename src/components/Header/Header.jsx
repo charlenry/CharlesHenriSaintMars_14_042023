@@ -1,4 +1,4 @@
-import wealthHealth from '../../assets/img/logo-50x50.jpg';
+import wealthHealth from '../../assets/img/logo.jpg';
 
 /**
  * This is defining a functional component named `Header` that takes in `props` as a parameter. The component returns a JSX element that displays the HRnet logo and title.
