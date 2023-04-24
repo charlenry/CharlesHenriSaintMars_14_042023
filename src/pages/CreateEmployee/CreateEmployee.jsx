@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import Header from "../../components/Header/Header";
 import DatePicker from "../../components/DatePicker/DatePicker";
 import Modal from "../../components/Modal/Modal";
 import { Link } from "react-router-dom";
 
- /**
+/**
  * This is a functional component renders a form for creating a new employee and handles the input values and validation. It also dispatches actions to update the Redux store with the new employee data.
  * Component's Hierarchy: CreateEmployee
- * 
+ *
  * @component
  * @name CreateEmployee
  * @kind function
@@ -35,25 +35,24 @@ const CreateEmployee = (props) => {
   const [zipCode, setZipCode] = useState("");
   const [isDateOfBirthCorrect, setIsDateOfBirthCorrect] = useState(false);
   const [isStartDateCorrect, setIsStartDateCorrect] = useState(false);
-  const [modal, setModal] = useState("");
+  const [modalDisplayState, setModalDisplayState] = useState("none");
   // Control of the dates from 1900 to 2999
   const [datePattern] = useState(
     /^((19[0-9]{2})|(2[0-9]{3}))-((0[1-9])|(1[0-2]))-((0[1-9])|(1[0-9])|(2[0-9])|(3[0-1]))$/
   );
 
-  useEffect(() => {    
+  useEffect(() => {
     setIsDateOfBirthCorrect(datePattern.test(dateOfBirth));
     setIsStartDateCorrect(datePattern.test(startDate));
-    
-    setModal(document.getElementById("modalId"));
+
     if (isEmployeeCreated) {
-      modal.style.display = "block";
+      setModalDisplayState("block");
     }
-  }, [dispatch, isEmployeeCreated, datePattern, dateOfBirth, startDate, modal.style]);
+  }, [dispatch, isEmployeeCreated, datePattern, dateOfBirth, startDate]);
 
   /**
    * `handleSave` is a function that is called when the "Save" button is clicked. It dispatches actions to update the Redux store with the new employee data. It also handles input validation by checking if all required fields are filled out and if the date inputs match the required pattern. If any of the inputs are invalid, it prevents the default form submission behavior. If all inputs are valid, it creates a new employee object with the input values and dispatches the `createEmployee` action with the new employee object as an argument.
-   * 
+   *
    * @function
    * @name handleSave
    * @memberof CreateEmployee
@@ -99,10 +98,9 @@ const CreateEmployee = (props) => {
     }
   };
 
-
   /**
    * `handleCloseModal` is a function that is called when the modal is closed. It sets the display of the confirmation modal to "none", resets the form input values, and dispatches the `resetFlags` action to update the Redux store.
-   * 
+   *
    * @function
    * @name handleCloseModal
    * @memberof CreateEmployee
@@ -111,7 +109,7 @@ const CreateEmployee = (props) => {
    */
   const handleCloseModal = (e) => {
     // e.preventDefault();
-    document.getElementById("create-employee").reset();      
+    document.getElementById("create-employee").reset();
     setFirstName("");
     setLastName("");
     setDateOfBirth("");
@@ -122,7 +120,7 @@ const CreateEmployee = (props) => {
     setState("");
     setZipCode("");
     import("../../redux/actions").then((action) => {
-      modal.style.display = "none"; 
+      setModalDisplayState("none");
       dispatch(action.resetFlags());
     });
   };
@@ -131,7 +129,9 @@ const CreateEmployee = (props) => {
     <>
       <Header />
       <div className="container bg-dark">
-        <Link className="button-link" to="/list-employees">View Current Employees</Link>
+        <Link className="button-link" to="/list-employees">
+          View Current Employees
+        </Link>
         <h2>Create Employee</h2>
         <form action="#" id="create-employee">
           <label htmlFor="first-name">First Name</label>
@@ -256,7 +256,11 @@ const CreateEmployee = (props) => {
           Save
         </button>
 
-        <Modal message="Employee Created!" handleClose={handleCloseModal} />
+        <Modal
+          displayState={modalDisplayState}
+          handleClose={handleCloseModal}
+          message="Employee Created!"
+        />
       </div>
     </>
   );
