@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/charlenry"
   },
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "This react component renders a modal with a message centered inside it with a close button.",
   "main": "dist/Modal.js",
   "module": "dist/Modal.js",

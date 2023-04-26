@@ -25,15 +25,14 @@ This react modal takes in six props :
 - `textColor` - The text color of the message (optional)
 - `btnColor` - The basic color of the close button (optional)
 
-The modal needs sass to run. See below how to install it.
+You can further customize the modal by overriding the classes that are in the Modal.scss file of the module. For example you can create an App.scss file and put this in it:
 
-```shell
-npm install sass
+```scss
+.modal .close-button:hover {
+  color: #ff0000!important;
+}
 ```
-or
-```shell
-yarn add sass
-```
+This code makes the close button of the modal red on hover.
 
 ### Example
 
