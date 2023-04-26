@@ -333,14 +333,16 @@ const DataTable = (props) => {
                       handleSort(column.propertyName, column.propertyType)
                     }
                   >
-                    <span>{column.title}&nbsp;&nbsp;</span>
-                    <i
-                      ref={addToRef}
-                      id={`#${column.propertyName}`}
-                      className={
-                        column.id === 1 ? "fas fa-sort-up" : "fas fa-sort"
-                      }
-                    ></i>
+                    <div className="th-content">
+                      <span>{column.title}&nbsp;</span>
+                      <i
+                        ref={addToRef}
+                        id={`#${column.propertyName}`}
+                        className={
+                          column.id === 1 ? "fas fa-sort-up" : "fas fa-sort"
+                        }
+                      ></i>
+                    </div>
                   </th>
                 );
               })}

@@ -62,8 +62,20 @@ table > tbody > tr:hover {
 
 th,
 td {
-  text-align: left;
   padding: 8px;
+}
+
+td {
+  text-align: left;
+}
+
+.th-content {
+  display: flex;
+  justify-content: space-around;
+}
+
+.th-content > span {
+  flex: 1;
 }
 
 // filters
