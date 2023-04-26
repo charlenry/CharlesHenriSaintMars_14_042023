@@ -196,6 +196,330 @@ message=&quot;Employee Created!&quot;
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_Modal_dist_Modal.js.html">components/Modal/dist/Modal.js</a>, <a href="components_Modal_dist_Modal.js.html#line11">line 11</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+
+
+<section>
+
+<header>
+    
+        <h2><span class="attribs"><span class="type-signature"></span></span>Modal<span class="signature">(displayState, handleClose, message, bgColor, textColor, btnColor)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+
+    
+    <h4 class="name" id="Modal"><span class="type-signature"></span>new Modal<span class="signature">(displayState, handleClose, message, bgColor, textColor, btnColor)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>This is defining a functional component called <b>Modal</b> that takes in six props,<b>displayState</b>, <b>handleClose</b>, <b>message</b>, <b>bgColor</b>, <b>textColor</b> and <b>btnColor</b> using destructuring syntax. The component returns a JSX element that renders a modal with a message and a close button.</p>
+<p>This modal component can be style in the Modal.scss file.</p>
+<p>Usage :
+&lt;Modal
+displayState={modalDisplayState}
+handleClose={handleCloseModal}
+message=&quot;Employee Created!&quot;
+bgColor=&quot;&quot;
+textColor=&quot;&quot;
+btnColor=&quot;&quot;
+/&gt;</p>
+<p>Component's Hierarchy: CreateEmployee &gt; Modal</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>displayState</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The open or closed state of the modal. It can be manage with a local state like in the example above. The two values are <b>block</b> and <b>none</b>. The modal is Hidden by default.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>handleClose</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">callback</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The callback that handles the close button of the modal</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The message to display in the modal</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>bgColor</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The background color of the modal (optional)</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>textColor</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The text color of the message (optional)</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>btnColor</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The basic color of the close button (optional)</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
         <a href="components_Modal_Modal.jsx.html">components/Modal/Modal.jsx</a>, <a href="components_Modal_Modal.jsx.html#line4">line 4</a>
     </li></ul></dd>
     
@@ -282,7 +606,7 @@ message=&quot;Employee Created!&quot;
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Apr 24 2023 18:18:04 GMT+0200 (heure d’été d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed Apr 26 2023 02:22:05 GMT+0200 (heure d’été d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>

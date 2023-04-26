@@ -260,6 +260,9 @@ const CreateEmployee = (props) => {
           displayState={modalDisplayState}
           handleClose={handleCloseModal}
           message="Employee Created!"
+          bgColor=""
+          textColor=""
+          btnColor=""
         />
       </div>
     </>
@@ -267,3 +270,22 @@ const CreateEmployee = (props) => {
 };
 
 export default CreateEmployee;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

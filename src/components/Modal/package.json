@@ -1,0 +1,46 @@
+{
+  "name": "@charlenry/react-modal-package",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/charlenry"
+  },
+  "version": "1.1.6",
+  "description": "This react component renders a modal with a message centered inside it with a close button.",
+  "main": "dist/Modal.js",
+  "module": "dist/Modal.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel Modal.jsx --out-dir dist/ --copy-files"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charlenry/react-modal-package.git"
+  },
+  "keywords": [
+    "react",
+    "modal",
+    "sass"
+  ],
+  "author": "Charles-Henri Saint-Mars",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/charlenry/react-modal-package/issues"
+  },
+  "homepage": "https://github.com/charlenry/react-modal-package#readme",
+  "peerDependencies": {
+    "prop-types": "^15.8.1",
+    "sass": "^1.62.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.4",
+    "@babel/preset-env": "^7.21.4"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "node-sass": "^8.0.0"
+  }
+}
