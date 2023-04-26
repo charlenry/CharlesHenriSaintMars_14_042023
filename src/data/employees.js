@@ -342,7 +342,7 @@ export const employees = [
     dateOfBirth: "1971-08-07",
     startDate: "1991-08-07",
     department: "Human Resources",
-    street: "Human Resources",
+    street: "Dumpa Park",
     city: "Fanujo",
     state: "ME",
     zipCode: "94637",
