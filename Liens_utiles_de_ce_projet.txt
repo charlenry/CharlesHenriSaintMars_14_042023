@@ -1,0 +1,23 @@
+- Lien du code source du projet complet :
+https://github.com/charlenry/CharlesHenriSaintMars_14_042023
+
+
+- Lien de la version de l'application fournie en jquery :
+https://charlenry.github.io/CharlesHenriSaintMars_14_042023/HRnet_w_jquery
+
+
+- Lien de la version de l'application que j'ai développée en React :
+https://charlenry.github.io/CharlesHenriSaintMars_14_042023/build
+
+
+- Lien du code source de la modale que j'ai développée en React :
+https://github.com/charlenry/react-modal-package
+
+
+- Lien du package de la modale publiée sur NPM :
+https://www.npmjs.com/package/react-modal-package
+
+
+- Lien des rapports de performances des deux versions de l'application :
+https://github.com/charlenry/CharlesHenriSaintMars_14_042023/tree/main/lighthouse_reports
+
